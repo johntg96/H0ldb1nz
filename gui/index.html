@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset='UTF-8'>
+    <title>h0ldb1nz</title>
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico'>
+    <link rel='stylesheet' type='text/css' href='styles.css'>
+  </head>
+  <body>
+    <header id="title-main">
+      <div id="logo-title">
+        <h2><span style='color: #ccc; font-family: "Source Code Pro", monospace;'>{</span><span style="color: #1361f2;">h0ld</span>b<span style="color: #1a821b;">1</span>n<span style='color: #8b10ef;'>z<span style='color: #ccc; font-family: "Source Code Pro", monospace;'>}</span></span></h2>
+      </div>
+      <div id="search-sro"> 
+        <input id="search-sro-box" type="text" maxlength="10" placeholder="SRO#######" onclick="this.value=''">
+        <input id="search-sro-btn" type="button" value="&#128294;" onclick="getSRO()">
+      </div>
+    </header>
+    <main>
+      <div id='spot-sro'>
+        <h1 class='text-fancy' id='spot-sro-title'>Spot SRO</h1>
+          <input class="spot-input" id="spotted-new-sro" type='text' maxlength="10" placeholder="SRO#######">
+          <div id="spot-spec-input">
+            <input class="spot-input" id="spotted-new-mfg" onclick="this.value=''" name="status" list="mfg-brand" placeholder="Mfg">
+            <datalist id="mfg-brand">
+              <option value="Lenovo"></option>
+              <option value="HP"></option>
+            </datalist>
+            <input class="spot-input" id="spotted-new-status" onclick="this.value=''" name="status" list="status_type" placeholder="P">
+            <datalist id="status_type">
+              <option value="P"></option>
+              <option value="W"></option>
+              <option value="R"></option>
+              <option value="E"></option>
+              <option value="Q"></option>
+              <option value="S"></option>
+              <option value="C"></option>
+              <option value="D"></option>
+            </datalist>
+            <input class="spot-input" id="spotted-new-date" type='date' onclick="this.value=''" maxlength="10" placeholder="Post Date">
+          </div>
+          <textarea class="spot-input" id="spotted-new-notes" type='text' rows="3" cols="35" placeholder="Notes"></textarea>
+          <button id=spot-btn>Mark</button>
+          <input id="spotted-sro-toted" type="checkbox" name="toted" value="yes">
+      </div>
+      <p>-</p>
+      <div id="function-ribbon" class='flex'>
+        <button id='export-sro-log-csv' class='ribbon-btns' onclick="exportLog('csv', 'loud')">CSV</button>
+        <button id='export-sro-log-json' class='ribbon-btns' onclick="exportLog('json', 'loud')">JSON</button>
+        <button id='export-sro-log-hide' class='ribbon-btns' onclick="hideLog()">Hide</button>
+        <button id='import-sro-log' class='ribbon-btns' onclick="showImportTextarea()">Import</button>
+        <div class="tooltip">
+          <button id='load-sro-log' class='ribbon-btns' onclick="importJsonLog()">Load</button>
+          <span class="tooltiptext">Place a .json file named "sweep.json" in directory "h0ldb1nz/data/" to load stored data into SRO log</span>
+        </div>
+        <button id='clear-sro-log' class='ribbon-btns' onclick="clearLog()">Clear</button>
+        <textarea id='import-sro-textarea' placeholder='Paste JSON here' style='display: none;'></textarea>
+        <div class='tooltip'>
+          <input id='import-sweep-date' placeholder='spot_date' type='date'>
+          <span class='tooltiptext'>Optional: Add this date to any entries for import missing a sweep date</span>
+        </div>
+        <button id='import-sro-log-btn' class='ribbon-btns' type='text' rows="10" cols="80" onclick="importLog()">Update</button>
+        <!-- Work in progress <button id='delete-hide-btn' class='ribbon-btns'>Hide Delete Column</button> -->
+      </div>
+      <div id='log-div'>
+        <p id='log-data'></p>
+        <table id="log">
+            <tr id='table-header'>
+              <th id='delete-column'>&#10006;</th>
+              <th id='column-sro'>SRO</th>
+              <th id='column-sweep-date'>Sweep Date</th>
+              <th id='column-mfg'>Mfg</th>
+              <th id='column-status'>Status</th>
+              <th id='column-post-date'>Post Date Age</th>
+              <th id='cell-notes'>Notes</th>
+            </tr>
+        </table>
+      </div>
+    </main>
+    <footer id='footer'>
+      <p id='table-info'>SRO Quantity in Table: </p>
+      <a href="https://github.com/johntg96"><p style="font-family: 'Press Start 2P', cursive; font-size: 0.45em">C. 2022 John Garrison</p></a>
+      <p style="font-family: 'Press Start 2p', monospace; font-size: 0.4em; text-align: right; margin-right: 1em;">v0.2.3 alpha</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
