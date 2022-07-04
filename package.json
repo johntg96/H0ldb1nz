@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johntg96/H0ldb1nz.git"
+    "url": "git+https://github.com/johntg96/h0ldb1nz.git"
   },
   "author": "John Garrison",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/johntg96/H0ldb1nz/issues"
+    "url": "https://github.com/johntg96/h0ldb1nz/issues"
   },
-  "homepage": "https://github.com/johntg96/H0ldb1nz#readme",
+  "homepage": "https://github.com/johntg96/h0ldb1nz#readme",
   "devDependencies": {
     "electron": "^19.0.7",
     "electron-packager": "^13.1.1"
