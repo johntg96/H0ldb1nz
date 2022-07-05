@@ -406,6 +406,10 @@ table, th, td {
 	width: 2em;
 }
 
+#toted-checkbox {
+	width: 2em;
+}
+
 #column-sro {
 	width: 7em;
 }

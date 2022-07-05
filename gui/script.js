@@ -220,14 +220,16 @@ const addSroToLog = (object, imported) => {
 		console.log(object.SRO + ' added to sro_log');
 
 		let row = log.insertRow(-1);
-		let cell1 = row.insertCell(0);
-		let cell2 = row.insertCell(1);
-		let cell3 = row.insertCell(2);
-		let cell4 = row.insertCell(3);
-		let cell5 = row.insertCell(4);
-		let cell6 = row.insertCell(5);
-		let cell7 = row.insertCell(6);
+		let cell0 = row.insertCell(0)
+		let cell1 = row.insertCell(1);
+		let cell2 = row.insertCell(2);
+		let cell3 = row.insertCell(3);
+		let cell4 = row.insertCell(4);
+		let cell5 = row.insertCell(5);
+		let cell6 = row.insertCell(6);
+		let cell7 = row.insertCell(7);
 
+		cell0.innerHTML = '<input class="toted-checkboxes" type="checkbox" name="toted" value="yes">';
 		cell1.innerHTML = '<button onclick="deleteRow(this)" class="delete-row-btn">&#10006;</button>';
 		cell2.parentNode.id = object.SRO;
 		cell2.classList.add('sro-cell');
