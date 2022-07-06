@@ -185,6 +185,8 @@ let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
+const today_short = today.substring(5);
+
 const getNumberOfDays = (post_date, today) => {
     const date1 = new Date(post_date);
     const date2 = new Date(today);
@@ -343,7 +345,7 @@ const addSroToLog = (object, imported) => {
 
 const deleteRow = (t) => {
 	let row = t.parentNode.parentNode;
-	let sro_to_delete = row.cells[1].textContent;
+	let sro_to_delete = row.cells[2].textContent;
     log.deleteRow(row.rowIndex);
     console.log(sro_to_delete + ' Removed from sro_log');
     new_entry = {}
@@ -494,6 +496,20 @@ const importJsonLog = () => {
 			}
 		}
 	}
+}
+
+const saveLog = (log) => {
+	const logJsonStr = JSON.stringify(log);
+	const fs = require('fs');
+	fs.writeFile('data/sweep_ ' + today_short + '.json', logJsonStr, (err) => {
+		if (err) {
+			console.log(err);
+		} else {
+			alert('sweep_' + today_short + '.json saved to data folder');
+			console.log('"new_sweep.json" saved to data/new_sweep.json');
+		}
+	});
+	
 }
 
 function clearLog() {

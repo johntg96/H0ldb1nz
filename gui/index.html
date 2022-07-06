@@ -54,6 +54,10 @@
           <button id='load-sro-log' class='ribbon-btns' onclick="importJsonLog()">Load</button>
           <span class="tooltiptext">Place a .json file named "sweep.json" in directory "h0ldb1nz/data/" to load stored data into SRO log</span>
         </div>
+        <div class="tooltip">
+          <button id='save-sro-log' class='ribbon-btns' onclick="saveLog(sro_log)">Save</button>
+          <span class="tooltiptext">Saves current table as new_sweep.json file in data folder</span>
+        </div>
         <button id='clear-sro-log' class='ribbon-btns' onclick="clearLog()">Clear</button>
         <textarea id='import-sro-textarea' placeholder='Paste JSON here' style='display: none;'></textarea>
         <div class='tooltip'>
