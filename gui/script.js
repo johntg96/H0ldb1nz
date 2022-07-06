@@ -67,8 +67,8 @@ const getSRO = () => {
 		console.log(sro_exists);
 		search_sro_box.style.borderColor = 'transparent';
 		search_sro_box.style.borderWidth = '0';
-		spot_sro_title.style.color = 'black';
-		spot_sro_title.innerHTML = 'Spot SRO';
+		spot_sro_title.innerHTML = 'Visual Sweep';
+		spot_sro_title.style.color = '#cccccc';
 
 		if (sro_exists.classList.contains('sro-cell-found')) {
 		 	sro_exists.classList.remove('sro-cell-found');
@@ -216,8 +216,8 @@ const addSroToLog = (object, imported) => {
 		spot_sro_title.style.color = 'red';
 	} else {
 		spotted_new_sro.style.borderColor = 'transparent';
-		spot_sro_title.innerHTML= 'Spot SRO';
-		spot_sro_title.style.color = 'black';
+		spot_sro_title.innerHTML= 'Visual Sweep';
+		spot_sro_title.style.color = '#cccccc';
 		sro_log.push(object);
 		console.log(object.SRO + ' added to sro_log');
 
@@ -360,8 +360,8 @@ const deleteRow = (t) => {
 spotted.addEventListener('click', function() {
 	if (spotted_new_sro.value.length != 0 && spotted_new_sro.value.includes('SRO')) {
 		spotted_new_sro.style.borderColor = 'transparent';
-		spot_sro_title.innerHTML= 'Spot SRO';
-		spot_sro_title.style.color = 'black';
+		spot_sro_title.innerHTML= 'Visual Sweep';
+		spot_sro_title.style.color = '#cccccc';
 
 		new_entry = {};
 		new_entry.SRO = spotted_new_sro.value;
