@@ -624,11 +624,11 @@ const importJsonLog = () => {
 const saveLog = (log) => {
 	const logJsonStr = JSON.stringify(log);
 	const fs = require('fs');
-	fs.writeFile('data/sweep_ ' + today_short + '.json', logJsonStr, (err) => {
+	fs.writeFile('sweep_' + today_short + '.json', logJsonStr, (err) => {
 		if (err) {
 			console.log(err);
 		} else {
-			alert('sweep_' + today_short + '.json saved to data folder');
+			alert('/resources/app/data/sweep_' + today_short + '.json saved to data folder');
 			console.log('"new_sweep.json" saved to data/new_sweep.json');
 		}
 	});
