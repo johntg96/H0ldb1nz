@@ -231,7 +231,7 @@ const addSroToLog = (object, imported) => {
 		let cell6 = row.insertCell(6);
 		let cell7 = row.insertCell(7);
 
-		cell0.innerHTML = '<input class="toted-checkboxes" type="checkbox" name="toted" value="yes">';
+		cell0.innerHTML = '<button onclick="toteRow(this)" class="toted-checkboxes">&#10004</button>';
 		cell1.innerHTML = '<button onclick="deleteRow(this)" class="delete-row-btn">&#10006;</button>';
 		cell2.parentNode.id = object.SRO;
 		cell2.classList.add('sro-cell');
@@ -354,6 +354,129 @@ const deleteRow = (t) => {
     // Consider moving this along with same calls from spotted event listener to overall 'update' function !!!
     table_info_qty.innerHTML = "SRO Quantity in Table: "+ String(sro_log.length);
     hideLog();
+}
+
+const toteRow = (t) => {
+	let row = t.parentNode.parentNode;
+	console.log(row);
+	let sro_to_tote = row.cells[2].textContent;
+	sro_in_log = sro_log.find(item => item.SRO === sro_to_tote);
+	console.log(sro_in_log);
+
+	if (sro_in_log.toted == 'n') {
+		sro_in_log.toted = 'y';
+		console.log(sro_to_tote + ' marked as toted');
+
+		// SRO
+		row.cells[2].style.backgroundColor = 'grey';
+
+		// Sweep Date
+		row.cells[3].style.backgroundColor = 'grey';
+
+		// Mfg
+		row.cells[4].style.backgroundColor = 'grey';
+		row.cells[4].style.color = 'black';
+
+		// Status
+		row.cells[5].style.backgroundColor = 'grey';
+		row.cells[5].style.color = 'black';
+
+		// Post Date Age
+		row.cells[6].style.backgroundColor = 'grey';
+		row.cells[6].style.color = 'black';
+
+		// Notes
+		row.cells[7].style.backgroundColor = 'grey';
+
+		table_info_qty.innerHTML = "SRO Quantity in Table: "+ String(sro_log.length);
+    	hideLog();
+	} else {
+		sro_in_log.toted = 'n';
+		console.log(sro_to_tote + ' toted = "n"');
+
+		row.cells[2].style.backgroundColor = 'white';
+		row.cells[3].style.backgroundColor = '#e6e6e6';
+
+		if (sro_in_log.mfg == 'Lenovo') {
+			row.cells[4].style.backgroundColor = '#2FA0EC';
+			row.cells[4].style.color = 'white';
+		} else if (sro_in_log.mfg == "HP") {
+			row.cells[4].style.backgroundColor = 'purple';
+			row.cells[4].style.color = 'white';
+		} else {
+			row.cells[4].style.backgroundColor = '#f9f5b1';
+		}
+	
+		row.cells[5].style.fontStyle = 'italic';
+	
+		if (sro_in_log.status == 'P') {
+			row.cells[5].style.backgroundColor = '#ddc76e';
+			row.cells[5].style.color = 'black';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'W') {
+			row.cells[5].style.backgroundColor = '#db746b';
+			row.cells[5].style.color = 'white';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'E') {
+			row.cells[5].style.backgroundColor = '#488ec4';
+			row.cells[5].style.color = 'white';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'R') {
+			row.cells[5].style.backgroundColor = '#e8aa53';
+			row.cells[5].style.color = 'black';
+			row.cells[5].style.borderColor = '#d84d22';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'Q') {
+			row.cells[5].style.backgroundColor = '#aa2929';
+			row.cells[5].style.color = 'white';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'S') {
+			row.cells[5].style.backgroundColor = 'white';
+			row.cells[5].style.color = '#aa2929';
+			row.cells[5].style.borderColor = '#aa2929';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'C') {
+			row.cells[5].style.backgroundColor = '#aa2929';
+			row.cells[5].style.color = 'white';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		} else if (sro_in_log.status == 'D') {
+			row.cells[5].style.backgroundColor = '#aa2929';
+			row.cells[5].style.color = 'white';
+			row.cells[5].style.borderColor = 'black';
+			row.cells[5].style.fontWeight = 'bold';
+		}
+
+		if (getNumberOfDays(sro_in_log.post_date, today) >= 30) {
+			row.cells[6].style.backgroundColor = '#ff3300';
+			row.cells[6].style.color = 'white';
+		} else if (getNumberOfDays(sro_in_log.post_date, today) >= 20 && getNumberOfDays(sro_in_log.post_date, today) < 30) {
+			row.cells[6].style.backgroundColor = '#ff6600';
+			row.cells[6].style.color = 'white';
+		} else if (getNumberOfDays(sro_in_log.post_date, today) >= 15 && getNumberOfDays(sro_in_log.post_date, today) < 20) {
+			row.cells[6].style.backgroundColor = '#ffff80';
+			row.cells[6].style.color = 'black';
+		} else if (getNumberOfDays(sro_in_log.post_date, today) >= 7 && getNumberOfDays(sro_in_log.post_date, today) < 15) {
+			row.cells[6].style.backgroundColor = '#ddff99';
+			row.cells[6].style.color = 'black';
+		} else if (getNumberOfDays(sro_in_log.post_date, today) >= 7 && getNumberOfDays(sro_in_log.post_date, today) < 15) {
+			row.cells[6].style.backgroundColor = '#bbff99';
+			row.cells[6].style.color = 'black';
+		} else if (getNumberOfDays(sro_in_log.post_date, today) >= 0 && getNumberOfDays(sro_in_log.post_date, today) < 7) {
+			row.cells[6].style.backgroundColor = '#80ff80';
+			row.cells[6].style.color = 'black';
+		} else {
+			row.cells[6].style.backgroundColor = '#EEEEEE';
+			row.cells[6].style.color = 'black';
+		}
+
+		row.cells[7].style.backgroundColor = 'white';
+	}
+	
 }
 
 // Add new row with cells when #spot-btn is clicked

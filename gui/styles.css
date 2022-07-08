@@ -411,6 +411,19 @@ table, th, td {
 	width: 2em;
 }
 
+.toted-checkboxes {
+	width: 100%;
+	height: 100%;
+}
+
+.grey-bg {
+	background-color: grey;
+}
+
+.toted-checkboxes:hover {
+	background-color: green;
+}
+
 #column-sro {
 	width: 7em;
 }
