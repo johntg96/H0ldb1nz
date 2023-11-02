@@ -8,5 +8,3 @@
 * Import/Export CSV and JSON
 * Total Qty
 * Delete by line
-
-*More to come*
